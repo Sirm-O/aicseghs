@@ -1,0 +1,203 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: '[skip ci] Upload "{{path}}"'
+    deleteMedia: '[skip ci] Delete "{{path}}"'
+
+# Remove local_backend for production deployment
+# local_backend: true
+
+media_folder: "public/images/uploads" # Media files will be stored in the repo under public/images/uploads
+public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
+
+# Enable editorial workflow for content review
+publish_mode: editorial_workflow
+
+collections:
+  # Gallery Collections
+  - name: "gallery_photos"
+    label: "Gallery Photos"
+    folder: "public/content/gallery/photos"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "image", widget: "image", required: true}
+      - {label: "Category", name: "category", widget: "select", options: ["Campus Life", "Academic Events", "Sports & Activities", "Special Events"], default: "Campus Life"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
+      
+  - name: "gallery_videos"
+    label: "Gallery Videos"
+    folder: "public/content/gallery/videos"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Video Thumbnail", name: "thumbnail", widget: "image", required: true}
+      - {label: "Video URL", name: "video_url", widget: "string", hint: "Enter YouTube or Vimeo URL"}
+      - {label: "Category", name: "category", widget: "select", options: ["School Events", "Academic Presentations", "Sports Competitions", "Cultural Performances"], default: "School Events"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
+  
+  # Page Content Collections
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "public/content/pages/home.json"
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string", default: "Welcome to Sengani Girls School"}
+              - {label: "Subtitle", name: "subtitle", widget: "string", default: "Empowering young women through quality education and holistic development"}
+              - {label: "Call to Action", name: "cta", widget: "string", default: "Learn More"}
+          - label: "Introduction Section"
+            name: "introduction"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string", default: "Nurturing Excellence"}
+              - {label: "Description", name: "description", widget: "text", default: "Sengani Girls School is dedicated to providing a supportive and enriching environment where young women can develop their academic abilities, character, and leadership skills."}
+          - label: "Features"
+            name: "features"
+            widget: "list"
+            fields:
+              - {label: "Icon", name: "icon", widget: "select", options: ["Star", "BookOpen", "Users", "Award"]}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - {label: "Quote", name: "quote", widget: "text"}
+              - {label: "Author", name: "author", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+      
+      - label: "About Page"
+        name: "about"
+        file: "public/content/pages/about.json"
+        fields:
+          - {label: "Title", name: "title", widget: "string", default: "About Sengani Girls School"}
+          - {label: "Description", name: "description", widget: "text", default: "Empowering young women through quality education and holistic development since 1985."}
+          - label: "History"
+            name: "history"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string", default: "Our History"}
+              - {label: "Content", name: "content", widget: "text"}
+          - label: "Mission"
+            name: "mission"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string", default: "Our Mission"}
+              - {label: "Content", name: "content", widget: "text"}
+          - label: "Vision"
+            name: "vision"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string", default: "Our Vision"}
+              - {label: "Content", name: "content", widget: "text"}
+          - label: "Values"
+            name: "values"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+      
+      - label: "Academics Page"
+        name: "academics"
+        file: "public/content/pages/academics.json"
+        fields:
+          - {label: "Title", name: "title", widget: "string", default: "Academics"}
+          - {label: "Description", name: "description", widget: "text", default: "Comprehensive education programs designed to nurture academic excellence and critical thinking."}
+          - label: "Curriculum"
+            name: "curriculum"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string", default: "Our Curriculum"}
+              - {label: "Description", name: "description", widget: "text"}
+          - label: "Subjects"
+            name: "subjects"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Icon", name: "icon", widget: "select", options: ["Calculator", "Microscope", "Globe", "Palette", "Music", "BookOpen"]}
+              - {label: "Description", name: "description", widget: "text"}
+          - label: "Achievements"
+            name: "achievements"
+            widget: "list"
+            field: {label: "Achievement", name: "achievement", widget: "string"}
+      
+      - label: "Student Life Page"
+        name: "studentLife"
+        file: "public/content/pages/student-life.json"
+        fields:
+          - {label: "Title", name: "title", widget: "string", default: "Student Life"}
+          - {label: "Description", name: "description", widget: "text", default: "A vibrant and enriching experience beyond academics."}
+          - label: "Holistic Development"
+            name: "holistic"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string", default: "Holistic Development"}
+              - {label: "Description", name: "description", widget: "text"}
+          - label: "Sports"
+            name: "sports"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string", default: "Sports & Physical Education"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Activities"
+                name: "activities"
+                widget: "list"
+                field: {label: "Activity", name: "activity", widget: "string"}
+          - label: "Clubs"
+            name: "clubs"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Icon", name: "icon", widget: "select", options: ["Zap", "BookOpen", "Palette", "Music", "Heart"]}
+              - {label: "Description", name: "description", widget: "text"}
+          - label: "Boarding"
+            name: "boarding"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string", default: "Boarding Life"}
+              - {label: "Description", name: "description", widget: "text"}
+      
+      - label: "Contact Page"
+        name: "contact"
+        file: "public/content/pages/contact.json"
+        fields:
+          - {label: "Title", name: "title", widget: "string", default: "Contact Us"}
+          - {label: "Description", name: "description", widget: "text", default: "Get in touch with us for admissions, inquiries, or any other information."}
+          - label: "Contact Information"
+            name: "contact_info"
+            widget: "object"
+            fields:
+              - {label: "Phone", name: "phone", widget: "string", default: "+91 98765 43210"}
+              - {label: "Email", name: "email", widget: "string", default: "info@senganigirlsschool.edu"}
+              - {label: "Address", name: "address", widget: "text", default: "Sengani Village, Dharmapuri District, Tamil Nadu 636807"}
+          - label: "Office Hours"
+            name: "office_hours"
+            widget: "object"
+            fields:
+              - {label: "Weekdays", name: "weekdays", widget: "string", default: "Monday - Friday: 9:00 AM - 5:00 PM"}
+              - {label: "Saturday", name: "saturday", widget: "string", default: "Saturday: 9:00 AM - 1:00 PM"}
+              - {label: "Sunday", name: "sunday", widget: "string", default: "Sunday: Closed"}
+          - {label: "Directions", name: "directions", widget: "text", default: "The school is located in Sengani Village, easily accessible by road from Dharmapuri town. Regular bus services are available."}
+          - label: "FAQs"
+            name: "faqs"
+            widget: "list"
+            fields:
+              - {label: "Question", name: "question", widget: "string"}
+              - {label: "Answer", name: "answer", widget: "text"}
+
