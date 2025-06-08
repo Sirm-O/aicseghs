@@ -2,20 +2,20 @@
   "title": "Contact Us",
   "description": "Get in touch with us for admissions, inquiries, or any other information.",
   "contact_info": {
-    "phone": "+91 98765 43210",
-    "email": "info@senganigirlsschool.edu",
-    "address": "Sengani Village, Dharmapuri District, Tamil Nadu 636807"
+    "phone": "+254 723 324 518",
+    "email": "senganigirlsschool@gmail.com",
+    "address": "70-90131, Tala."
   },
   "office_hours": {
-    "weekdays": "Monday - Friday: 9:00 AM - 5:00 PM",
+    "weekdays": "Monday - Friday: 8:00 AM - 5:00 PM",
     "saturday": "Saturday: 9:00 AM - 1:00 PM",
     "sunday": "Sunday: Closed"
   },
-  "directions": "The school is located in Sengani Village, easily accessible by road from Dharmapuri town. Regular bus services are available.",
+  "directions": "The school is located in Sengani Village, easily accessible by road from Tala town. Vehicles and Motorbikes are available.",
   "faqs": [
     {
       "question": "What is the admission process?",
-      "answer": "Admissions are open from January to March each year. Please visit the school office with required documents including birth certificate, previous school records, and passport-size photographs."
+      "answer": "Admissions are open from November to December each year. Please visit the school office with required documents, including a birth certificate, previous school records, and passport-size photographs."
     },
     {
       "question": "Do you provide boarding facilities?",
@@ -23,12 +23,11 @@
     },
     {
       "question": "What are the school timings?",
-      "answer": "School hours are from 9:00 AM to 4:00 PM, Monday through Friday. Saturday classes are from 9:00 AM to 1:00 PM."
+      "answer": "School hours are from 8:00 AM to 4:10 PM, Monday through Friday. Saturday classes are from 8:30 AM to 1:00 PM. Evening classes start at 7:00 PM and end at 8:00 PM. The Girls then are left to do their personal studies till 9:30pm, when they go to their dormitories"
     },
     {
       "question": "What extracurricular activities are available?",
-      "answer": "We offer various clubs including Science Club, Literary Club, Art Club, Music Club, and Community Service. Sports activities include basketball, volleyball, badminton, and athletics."
+      "answer": "We offer various clubs, including Science Club, Literary Club, Art Club, Music Club, and Community Service. Sports activities include basketball, volleyball, badminton, athletics, football, and rugby."
     }
   ]
 }
-
